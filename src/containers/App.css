@@ -1,0 +1,13 @@
+body {
+  background: lightgrey;
+  width:375px;
+  height: 665px;
+}
+
+.App {
+  text-align: center;
+  width: 375px;
+  height: 665px;
+  margin: auto;
+  background-color: white;
+}
