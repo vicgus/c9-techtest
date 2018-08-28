@@ -1,13 +1,20 @@
 body {
   background: lightgrey;
   width:375px;
-  height: 665px;
+  margin: auto;
 }
 
 .App {
   text-align: center;
   width: 375px;
-  height: 665px;
+  height: 750px;
   margin: auto;
   background-color: white;
+  font-family: 'MillerBanner Light';
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: 'MillerBanner Light';
+  src: url('./Font Bureau - MillerBanner Light.otf');
 }

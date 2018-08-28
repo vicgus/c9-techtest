@@ -1,0 +1,43 @@
+.StatusDiv {
+    width: 150px;
+    margin-left: 190px;
+    height: 3px;
+    background-color: #B69F58;
+}
+
+/* .Vacant {
+    font-size: 20px;
+    margin: 50px 0 50px 40px;
+    border-bottom: solid lightgray 1px;
+} */
+
+
+.Button {
+    height: 50px;
+    font-family: inherit;
+    font-size: 25px;
+    width: 180px;
+    margin-left: 40px;
+    background-color: #B69F58;
+}
+
+.p {
+    float: left;
+    text-align: left;
+    width: 325px;
+    height: 40px;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-bottom: solid lightgray 1px;
+    font-size: 18px;
+}
+
+.Container {
+    height: 500px;
+    width: 325px;
+}
+
+.img {
+    margin-right: 20px;
+}

@@ -1,0 +1,10 @@
+.Switch {
+    display: inline-block;
+    text-align: center;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.TextBar {
+    font-size: 20px;
+}

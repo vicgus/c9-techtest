@@ -1,0 +1,52 @@
+body {
+    background-color: #F9F9F9;
+}
+
+.ImgDiv {
+    background-image: url("../../assets/images/background.png");
+    height: 250px;
+}
+
+.Header {
+    color: white;
+    font-size: 30px;
+    margin: 150px 200px 0 0;
+}
+
+.Rating {
+    color: white;
+    float: left;
+    height: 20px;
+    margin-left: 20px;
+    font-size: 20px;
+    margin: 0 20px 0 0;
+    height: 15px;
+}
+
+.Rates {
+    color: white;
+    font-size: 20px;
+    margin-left: 20px;
+    float: left;
+    margin: 0 200px 0 0;
+    height: 15px;
+}
+
+.right {
+    float: right;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+
+.left {
+    float: left;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.SpaceBar {
+    height: 15px;
+    background-color: beige;
+    display: block;
+}
+

@@ -22,7 +22,7 @@ class App extends PureComponent {
       showMenu: false,
       listView: true,
       range: '-',
-      selectedShop: null
+      selectedShop: null,
     };
   }
 
@@ -117,16 +117,25 @@ class App extends PureComponent {
   render () {
     console.log( '[App.js] Inside render()' );
     let view = null;
-    let shopsss = null;
+    let shops = null;
 
     if (this.state.listView) {
-      shopsss = (
+      shops = (
         <div>
           {this.state.shops.map((shop, index) => {
             return <Shop 
               name={shop.name}
               price={shop.price}
-              id={shop.id}
+              address={shop.address}
+              rating={shop.rating}
+              rates={shop.rates}
+              time={shop.time}
+              vacantTime={shop.vacantTime}
+              phone={shop.phone}
+              closingTime={this.closingTime}
+              url={shop.url}
+              description={shop.description}
+              key={shop.id}
               clicked={() => this.toggleShopViewHandler(index)}/>
           })} 
         </div>
@@ -134,7 +143,6 @@ class App extends PureComponent {
       view = (
         <div>
           <MainView
-            appTitle={this.props.title}
             showMenu={this.state.showMenu}
             clickMenu={this.toggleFilterHandler}
             buttonChangeOne={this.toggleTextChangeHandlerOne.bind(this)} 
@@ -142,7 +150,7 @@ class App extends PureComponent {
             buttonChangeThree={this.toggleTextChangeHandlerThree.bind(this)}
             buttonChangeFour={this.toggleTextChangeHandlerFour.bind(this)}
             buttonText= {this.state.range} />
-          {shopsss}
+          {shops}
       </div>
       );
     }
@@ -152,7 +160,7 @@ class App extends PureComponent {
         <div>
           <ShopView 
             backClick={this.toggleShopViewHandler}
-            testShop={this.state.selectedShop}/>
+            showShop={this.state.selectedShop}/>
         </div>
       );   
     }

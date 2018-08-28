@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import classes from './Filter.css';
+import classes from '../MainView.css';
 import FilterButton from './FilterButton';
 
 
 class Filter extends Component {
     render () {
-        let btnClass = classes.Button;
-        return(
+        return (
         // const rangeList = 
         //     [this.props.firstRange,
         //     this.props.secondRange,
@@ -20,69 +19,31 @@ class Filter extends Component {
         // return( rangeList.map((p) => {
         //     return <FilterButton className={btnClass} range={p} />
         // })
-        <div>
+        <div >
             <button
-                className={btnClass}
+                className={classes.Button}
                 onClick={this.props.firstRange}>
-            -
+                <p className={classes.p}>-</p>
             </button>
             <button
-                className={btnClass}
+                className={classes.Button}
                 onClick={this.props.secondRange}>
-                0-250
+                <p className={classes.p}>0-250</p>
             </button>
             <button
-                className={btnClass}
+                className={classes.Button}
                 onClick={this.props.thirdRange}>
-                250-500
+                <p className={classes.p}>250-500</p>
             </button>
             <button
-                className={btnClass}
+                className={classes.Button}
                 onClick={this.props.fourthRange}>
-                Över 500
+                <p className={classes.p}>Över 500</p>
             </button>
         </div>
         );
     }
 }
 
-
 export default Filter;
 
-
-
-// import React, {Component} from 'react';
-// import classes from './Filter.css';
-
-// class Filter extends Component {
-//     render () {
-//         let btnClass = classes.Button;
-//         return(
-//         <div>
-//             <button
-//                 className={btnClass}
-//                 onClick={this.props.firstRange}>
-//             -
-//             </button>
-//             <button
-//                 className={btnClass}
-//                 onClick={this.props.secondRange}>
-//                 0-250
-//             </button>
-//             <button
-//                 className={btnClass}
-//                 onClick={this.props.thirdRange}>
-//                 250-500
-//             </button>
-//             <button
-//                 className={btnClass}
-//                 onClick={this.props.fourthRange}>
-//                 Över 500
-//             </button>
-//         </div>
-//         )        
-//     }
-// }
-
-
-// export default Filter;

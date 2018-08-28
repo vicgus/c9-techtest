@@ -1,7 +1,7 @@
 //Not used atm. 
 
 import React, {Component} from 'react';
-import classes from './Filter.css';
+import classes from '../MainView.css';
 
 class FilterButton extends Component {
     render() {
