@@ -5,13 +5,6 @@
     background-color: #B69F58;
 }
 
-/* .Vacant {
-    font-size: 20px;
-    margin: 50px 0 50px 40px;
-    border-bottom: solid lightgray 1px;
-} */
-
-
 .Button {
     height: 50px;
     font-family: inherit;
@@ -19,6 +12,7 @@
     width: 180px;
     margin-left: 40px;
     background-color: #B69F58;
+    border-radius: 4px;
 }
 
 .p {
@@ -29,7 +23,18 @@
     margin-top: 50px;
     margin-left: 20px;
     margin-right: 20px;
-    border-bottom: solid lightgray 1px;
+    font-size: 18px;
+}
+
+.p1 {
+    float: left;
+    text-align: left;
+    width: 325px;
+    height: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     font-size: 18px;
 }
 

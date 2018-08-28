@@ -7,17 +7,16 @@ import back_white from '../../../assets/images/back_white.png';
 import classes from '../ShopView.css';
 
 const shopViewHeader = (props) => {
-    return( 
+    return ( 
         <div className={classes.ImgDiv}>
             <img src={whitestatus} alt='Statusbar' />
             <img className={classes.left} src={back_white} alt='Back' onClick={props.clickBack}/>
             <img className={classes.right} src={like} alt='Back' /> 
             <header className={classes.Header}>{props.name}</header>
-            {/* <RatingImg rating={props.rating}/> */}
-            <p className={classes.Rating}>{props.rating} </p>
+            <RatingImg rating={props.rating}/>
             <p className={classes.Rates}>({props.rates})</p>
         </div>
-)
+    )
 };
 
 export default shopViewHeader;

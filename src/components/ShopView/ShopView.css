@@ -15,20 +15,15 @@ body {
 
 .Rating {
     color: white;
-    float: left;
     height: 20px;
-    margin-left: 20px;
-    font-size: 20px;
-    margin: 0 20px 0 0;
+    margin-right: 230px;
     height: 15px;
 }
 
 .Rates {
     color: white;
-    font-size: 20px;
-    margin-left: 20px;
-    float: left;
-    margin: 0 200px 0 0;
+    font-size: 15px;
+    margin: 0 300px 0 0;
     height: 15px;
 }
 

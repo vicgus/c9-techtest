@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './App.css';
 
@@ -177,3 +178,7 @@ export default withClass( App, classes.App );
 
 
 
+App.PropTypes = {
+  name:PropTypes.string,
+  address:PropTypes.string
+}

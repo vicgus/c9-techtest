@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import whitestatus from '../../assets/images/Status Bar/white_status.png';
-import classes from './ShopView.css';
 import Aux from '../../hoc/Aux';
 import back_white from '../../assets/images/back_white.png';
 import ratingzero from '../../assets/images/rating_zero.png';

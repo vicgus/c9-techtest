@@ -1,5 +1,7 @@
 import React from 'react';
 import clock from "../../../assets/images/clock.png";
+import phone from "../../../assets/images/phone.png";
+import globe from "../../../assets/images/globe.png";
 import classes from './Schedule.css';
 
 const schedule = (props) => {
@@ -20,7 +22,19 @@ const schedule = (props) => {
                     onClick={book}>
                     Boka!
                 </button>
-                
+                <p className={classes.p}>
+                    För andra lediga tider hör av dig till oss!
+                </p>
+                <p className={classes.p1}>
+                    <img src={phone} alt="phone"
+                    className={classes.img} />
+                    {props.shops.phone}
+                </p>
+                <p className={classes.p1}>
+                <img src={globe} alt="Web"
+                    className={classes.img} />
+                    {props.shops.url}
+                </p>
             </div>
         </div> 
     );
