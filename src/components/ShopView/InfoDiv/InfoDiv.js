@@ -12,25 +12,25 @@ const infoDiv = (props) => {
             <p className={classes.p}>
                 <img src={geo} alt="Address"
                 className={classes.img} />
-                {props.shops.address}
+                {props.shop.address}
             </p>
             <p className={classes.p}>
                 <img src={clock} alt="Clock"
                 className={classes.img} />
-                Öppet till: {props.shops.closingTime}
+                Öppet till: {props.shop.closingTime}
             </p>
             <p className={classes.p}>
                 <img src={phone} alt="phone"
                 className={classes.img} />
-                {props.shops.phone}
+                {props.shop.phone}
             </p>
             <p className={classes.p2}>
                 <img src={globe} alt="Address"
                 className={classes.img} />
-                {props.shops.url}
+                {props.shop.url}
             </p>
             <p className={classes.p1}>
-                {props.shops.description}
+                {props.shop.description}
             </p>
         </div>
     )      
