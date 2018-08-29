@@ -1,48 +1,37 @@
 import React, {Component} from 'react';
 import classes from '../MainView.css';
-import FilterButton from './FilterButton';
-
 
 class Filter extends Component {
-    render () {
-        return (
-        // const rangeList = 
-        //     [this.props.firstRange,
-        //     this.props.secondRange,
-        //     this.props.thirdRange,
-        //     this.props.fourthRange
-        //     ];
-        // const btnText = [
-        //     '-', '0-250', '250-500', 'Över 500'
-        // ];
+  render() {
+    const {filterPrice} = this.props;
 
-        // return( rangeList.map((p) => {
-        //     return <FilterButton className={btnClass} range={p} />
-        // })
-        <div >
-            <button
-                className={classes.Button}
-                onClick={this.props.firstRange}>
-                <p className={classes.p}>-</p>
-            </button>
-            <button
-                className={classes.Button}
-                onClick={this.props.secondRange}>
-                <p className={classes.p}>0-250</p>
-            </button>
-            <button
-                className={classes.Button}
-                onClick={this.props.thirdRange}>
-                <p className={classes.p}>250-500</p>
-            </button>
-            <button
-                className={classes.Button}
-                onClick={this.props.fourthRange}>
-                <p className={classes.p}>Över 500</p>
-            </button>
-        </div>
-        );
-    }
+    // propen filterPrice är en funktion som tar lägsta och högsta pris
+
+    return (
+      <div>
+        <button
+          className={classes.Button}
+          onClick={() => filterPrice(0, 0)}>
+          <p className={classes.p}>-</p>
+        </button>
+        <button
+          className={classes.Button}
+          onClick={() => filterPrice(0, 250)}>
+          <p className={classes.p}>0-250</p>
+        </button>
+        <button
+          className={classes.Button}
+          onClick={() => filterPrice(250, 500)}>
+          <p className={classes.p}>250-500</p>
+        </button>
+        <button
+          className={classes.Button}
+          onClick={() => filterPrice(500, 0)}>
+          <p className={classes.p}>Över 500</p>
+        </button>
+      </div>
+    );
+  }
 }
 
 export default Filter;

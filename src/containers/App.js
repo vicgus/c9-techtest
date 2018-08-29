@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './App.css';
@@ -14,171 +14,117 @@ import {shopsData} from '../assets/shops.json'
 const shopsServerData = shopsData;
 
 class App extends PureComponent {
-  constructor( props ) {
-    super( props );
+  constructor(props) {
+    super(props);
 
-    console.log( '[App.js] Inside Constructor', props );
+    // Byt range till min och max
     this.state = {
       shops: [...shopsServerData],
       showMenu: false,
       listView: true,
-      range: '-',
+      rangeMin: 0,
+      rangeMax: 0,
       selectedShop: null,
     };
+
+    // Binda this i constuctorn så vi kan skicka argument till funktionen nere i render
+    this.filterPrice = this.filterPrice.bind(this);
   }
 
-  componentWillMount () {
-    console.log( '[App.js] Inside componentWillMount()' );
+  componentWillMount() {
+    console.log('[App.js] Inside componentWillMount()');
   }
 
-  componentDidMount () {
-    console.log( '[App.js] Inside componentDidMount()' );
+  componentDidMount() {
+    console.log('[App.js] Inside componentDidMount()');
   }
 
-  componentWillUpdate ( nextProps, nextState ) {
-    console.log( '[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState );
+  componentWillUpdate(nextProps, nextState) {
+    console.log('[UPDATE App.js] Inside componentWillUpdate', nextProps, nextState);
   }
 
-  componentDidUpdate () {
-    console.log( '[UPDATE App.js] Inside componentDidUpdate' );
+  componentDidUpdate() {
+    console.log('[UPDATE App.js] Inside componentDidUpdate');
   }
 
   toggleFilterHandler = () => {
     const filterShow = this.state.showMenu;
     this.setState({showMenu: !filterShow});
-  }
+  };
 
-  toggleTextChangeHandlerOne = () => {
-    const shopsCopy = [...shopsServerData];
-    const filterShow = this.state.showMenu;
-    this.setState( () => {
-      return {
-        range: '-',
-        shops: shopsCopy,
-        showMenu: !filterShow
-      }
+  filterPrice = (min, max) => {
+    // Slå ihop filter-funktionerna till en funktion som tar argument
+    this.setState({
+      rangeMin: min,
+      rangeMax: max,
+      showMenu: false
     });
-  }
+  };
 
-  toggleTextChangeHandlerTwo = () => {
-    const shopsCopy = [...shopsServerData];
-    const newState = shopsCopy.filter(sh => sh.price < 250);
-    const filterShow = this.state.showMenu;
-    this.setState( () => {
-      return {
-        range: '0-250',
-        shops: newState,
-        showMenu: !filterShow
-      }
-    });
-  }
- 
-  toggleTextChangeHandlerThree = () => {
-    const shopsCopy = [...shopsServerData];
-    const firstState = shopsCopy.filter(sh => sh.price > 250);
-    const secondState = firstState.filter(sh => sh.price < 500);
-    const filterShow = this.state.showMenu;
-    this.setState( () => {
-      return {
-        range: '250-500',
-        shops: secondState,
-        showMenu: !filterShow
-      }
-    });
-  }
-
-  toggleTextChangeHandlerFour = () => {
-    const shopsCopy = [...shopsServerData];
-    const newState = shopsCopy.filter(sh => sh.price > 500);
-    const filterShow = this.state.showMenu;
-    this.setState( () => {
-      return {
-        range: 'Över 500',
-        shops: newState,
-        showMenu: !filterShow
-      }
-    });
-    console.log(this.state.shops)
-  }
-
-  toggleShopViewHandler = (shopIndex) => {
+  toggleShopViewHandler = (shopId) => {
     const shopShow = this.state.listView;
+    const shop = this.state.shops.find(shop => shop.id === shopId);
 
-    const shop = this.state.shops[shopIndex];
-
-    this.setState( () => {
+    this.setState(() => {
       return {
         listView: !shopShow,
         selectedShop: shop
       }
-      });
+    });
     console.log(this.state.selectedShop, this.state.listView)
-  }
+  };
 
-  render () {
-    console.log( '[App.js] Inside render()' );
-    let view = null;
-    let shops = null;
+  render() {
+    console.log('[App.js] Inside render()');
 
-    if (this.state.listView) {
-      shops = (
-        <div>
-          {this.state.shops.map((shop, index) => {
-            return <Shop 
-              name={shop.name}
-              price={shop.price}
-              address={shop.address}
-              rating={shop.rating}
-              rates={shop.rates}
-              time={shop.time}
-              vacantTime={shop.vacantTime}
-              phone={shop.phone}
-              closingTime={this.closingTime}
-              url={shop.url}
-              description={shop.description}
-              key={shop.id}
-              clicked={() => this.toggleShopViewHandler(index)}/>
-          })} 
-        </div>
+    // Bryt ut variabler från state
+    const {listView, rangeMin, rangeMax, shops, showMenu} = this.state;
+
+    if (listView) {
+      return (
+        <Aux>
+          <div>
+            <MainView
+              showMenu={showMenu}
+              clickMenu={this.toggleFilterHandler}
+              filterPrice={this.filterPrice}
+              rangeMin={rangeMin}
+              rangeMax={rangeMax} />
+            <div>
+              {shops
+              .filter((shop) => {
+                // Ist för att byta ut salongerna i state filtreras de här, state innehåller alltså alltid alla salonger.
+                return (shop.price >= rangeMin || !rangeMin) && (shop.price <= rangeMax || !rangeMax);
+              })
+              .map((shop) => {
+                // För lite renare kod skickas salongen in som en prop som sedan deconstructas i <Shop>
+
+                // Ist för att gå på index i en array (som kan vara lite farligt om man till exempel vill lägga på sortering)
+                // går clicked-functionen på salongens id.
+                return <Shop key={shop.id} shop={shop} clicked={() => this.toggleShopViewHandler(shop.id)}/>
+              })}
+            </div>
+          </div>
+        </Aux>
       );
-      view = (
-        <div>
-          <MainView
-            showMenu={this.state.showMenu}
-            clickMenu={this.toggleFilterHandler}
-            buttonChangeOne={this.toggleTextChangeHandlerOne.bind(this)} 
-            buttonChangeTwo={this.toggleTextChangeHandlerTwo.bind(this)}
-            buttonChangeThree={this.toggleTextChangeHandlerThree.bind(this)}
-            buttonChangeFour={this.toggleTextChangeHandlerFour.bind(this)}
-            buttonText= {this.state.range} />
-          {shops}
-      </div>
+    } else {
+      return (
+        <Aux>
+          <div>
+            <ShopView
+              backClick={this.toggleShopViewHandler}
+              shop={this.state.selectedShop}/>
+          </div>
+        </Aux>
       );
     }
-
-    if ( !this.state.listView ) {
-      view = (
-        <div>
-          <ShopView 
-            backClick={this.toggleShopViewHandler}
-            showShop={this.state.selectedShop}/>
-        </div>
-      );   
-    }
-    
-    return (
-      <Aux>
-        {view}
-      </Aux>
-    );
   }
 }
 
-export default withClass( App, classes.App );
-
+export default withClass(App, classes.App);
 
 
 App.PropTypes = {
-  name:PropTypes.string,
-  address:PropTypes.string
+  name: PropTypes.string,
+  address: PropTypes.string
 }

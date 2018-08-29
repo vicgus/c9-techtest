@@ -2,24 +2,23 @@ import React from 'react';
 import classes from './Shop.css';
 import right from '../../../assets/images/right.svg';
 
-const shop = (props) => {
-    let ratePic = require(`./images/${props.rating}.svg`);
-    console.log(ratePic);
-    return  <div    
-                onClick={props.clicked}                
-                className={classes.ShopItem}>
-                    <p className={classes.VacantTime}>{props.vacantTime}</p>
-                    <p className={classes.Name}>{props.name}</p>
-                    {/* <p className={classes.Rating}>Rating: {props.rating}</p> */}
-                    <img className={classes.Rating} 
-                    src = {ratePic}
-                    alt='Rating'/>
-                    <p className={classes.Rates}>({props.rates})</p>
-                    <p className={classes.Address}>{props.address}</p>
-                    <img className={classes.right} src={right} alt='Right'/>
-                    <p className={classes.Price}>{props.price} kr</p>
-                    <p className={classes.Time}>{props.time}</p>
-            </div>
+const shop = ({shop, clicked}) => {
+  let ratePic = require(`./images/${shop.rating}.svg`);
+  return <div
+    onClick={() => clicked()}
+    className={classes.ShopItem}>
+    <p className={classes.VacantTime}>{shop.vacantTime}</p>
+    <p className={classes.Name}>{shop.name}</p>
+    {/* <p className={classes.Rating}>Rating: {shop.rating}</p> */}
+    <img className={classes.Rating}
+         src={ratePic}
+         alt='Rating'/>
+    <p className={classes.Rates}>({shop.rates})</p>
+    <p className={classes.Address}>{shop.address}</p>
+    <img className={classes.right} src={right} alt='Right'/>
+    <p className={classes.Price}>{shop.price} kr</p>
+    <p className={classes.Time}>{shop.time}</p>
+  </div>
 
 };
 
